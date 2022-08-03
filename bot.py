@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from config import *
 
-TOKEN = Discord_key
+TOKEN_ = Discord_key
 client = commands.Bot(command_prefix='.')
 
 @client.event
