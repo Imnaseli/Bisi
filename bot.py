@@ -2,12 +2,11 @@ import discord
 from discord.ext import commands
 from config import *
 
-TOKEN_ = Discord_key
+Discord_key = TOKEN_ 
 client = commands.Bot(command_prefix='.')
 
 @client.event
 async def on_ready():
     print("Bisi is ready!")
 
-client.run(TOKEN)
-# print(TOKEN)
+client.run(Discord_key)
