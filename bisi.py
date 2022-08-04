@@ -18,22 +18,15 @@ bot = commands.Bot(command_prefix='.')
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-@bot.event()
+@bot.event
 async def on_ready():
     change_status.start()
-    scheduledtips.start()
     await bot.change_presence(status=discord.Status.online) 
     print("Bisi is ready!")
     
 @tasks.loop(minutes=2.5)
 async def change_status():
     await bot.change_presence(activity=discord.Game(next(statuses)))
-
-@tasks.loop(minutes=7)
-@bot.command()
-async def scheduledtips(ctx):
-    bot.ctx.send(f'{next(tips)}')
-
 
 @commands.has_permissions(administrator = True)
 @bot.command(help = "/ For Administrators")
