@@ -1,12 +1,51 @@
 import discord
+import aiohttp
+import asyncio
+import random 
 from discord.ext import commands
+from grpc import Channel
+from sympy import limit
 from config import *
+"""""
+An Event is a piece of code that runs when the bot detects that a specific activity has happened(Line)
+The prefix is the character we put before our command that make the bot run it (Line)
+Event decorator / simply saying " eyo! this is an Event "
 
+"""""
 Discord_key = TOKEN_ 
-client = commands.Bot(command_prefix='.')
+bot = commands.Bot(command_prefix='.')
 
-@client.event
-async def on_ready():
-    print("Bisi is ready!")
+@bot.event 
+async def on_ready(): 
+    print("Bisi is ready!") #Of course you are
+    
+@bot.event
+async def on_member_join(member):
+    print(f"{member} has joined The Shifty Hell server.")
+    
+@bot.event
+async def on_member_remove(member):
+    print(f"{member} has left The Shifty Hell server.")
+    
+@bot.command()
+async def hi(ctx):
+    await ctx.send(f"Hey, {ctx.author.name} , my name is Bisi.")
 
-client.run(Discord_key)
+@bot.command(pass_context=True)
+async def meme(ctx):
+    embed = discord.Embed(title="", description="")
+
+    async with aiohttp.ClientSession() as cs:
+        async with cs.get('https://www.reddit.com/r/dankmemes/new.json?sort=hot') as r:
+            res = await r.json()
+            embed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
+            await ctx.send(embed=embed)
+    
+@bot.command()
+async def thanks(ctx):
+    await ctx.send(f"You are welcome, {ctx.author.name}")
+
+
+
+
+bot.run(Discord_key) #The bot instance has to run right?
