@@ -1,5 +1,6 @@
 import discord
 import aiohttp
+import os
 import asyncio
 import random 
 from discord.ext import commands
@@ -45,7 +46,23 @@ async def meme(ctx):
 async def thanks(ctx):
     await ctx.send(f"You are welcome, {ctx.author.name}")
 
+@bot.command()
+async def badgirl(ctx):
+    await ctx.send(f"I'm soo sorry {ctx.author.name}, please spank me sir")
+    
+@bot.command()
+async def bitch(ctx):
+    await ctx.send(f"Yes sir, what do you need?")
 
+@bot.command()
+async def source(ctx):
+    await ctx.send(f"Hello {ctx.author.name} {os.linesep}https://github.com/Imnaseli/Bisi")
+
+@bot.command()
+async def about(ctx):
+    await ctx.send("I am an all-mighty Intelligent Discord server bot built by Oluwasijibomi Ilesanmi")
+    
+    
 
 
 bot.run(Discord_key) #The bot instance has to run right?
