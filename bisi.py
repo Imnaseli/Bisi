@@ -3,7 +3,7 @@ import aiohttp
 import os
 import asyncio
 import random 
-from discord.ext import commands
+from discord.ext import commands , tasks
 from grpc import Channel
 from sympy import limit
 """""
@@ -18,18 +18,29 @@ bot = commands.Bot(command_prefix='.')
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+@bot.event()
+async def on_ready():
+    change_status.start()
+    await bot.change_presence(status=discord.Status.online) 
+    print("Bisi is ready!")
+    
+@tasks.loop(minutes=2.5)
+async def change_status():
+    await bot.change_presence(activity=discord.Game(next(statuses)))
+
+
 @commands.has_permissions(administrator = True)
-@bot.command()
+@bot.command(help = "/ For Administrators")
 async def load(ctx , extension):
     bot.load_extension(f'cogs.{extension}')
 
 @commands.has_permissions(administrator = True)
-@bot.command()
+@bot.command(help = "/ For Administrators")
 async def unload(ctx , extension):
     bot.unload_extension(f'cogs.{extension}')
 
 @commands.has_permissions(administrator = True)    
-@bot.command()
+@bot.command(help = "/ For Administrators")
 async def reload(ctx , extension):
     bot.unload_extension(f'cogs.{extension}')
     bot.load_extension(f'cogs.{extension}')
