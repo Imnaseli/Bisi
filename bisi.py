@@ -50,5 +50,18 @@ for filename in os.listdir('./cogs'):
         bot.load_extension(f'cogs.{filename[:-3]}')
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Errors - For now will create a cog for it soon.
+@bot.event
+async def on_command_error (ctx , error):
+    if isinstance(error , commands.CommandNotFound):
+        await ctx.send(f"Invalid command from {ctx.author.name}{os.linesep}(Please use .help to see a list of all commands)")
+
+
+
+
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 bot.run(Discord_key) #The bot instance has to run right?

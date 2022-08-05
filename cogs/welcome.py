@@ -14,7 +14,8 @@ class Welcome(commands.Cog):
 
 
     @commands.Cog.listener()
-    async def on_member_join(self , member):
+    async def on_member_join(self, ctx , member):
+        await ctx.send(f"{member} has joined The Shifty Hell.")
         print(f"{member} has joined The Shifty Hell server.")
         
     @commands.Cog.listener()
