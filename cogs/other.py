@@ -12,7 +12,7 @@ class Other(commands.Cog):
     def __init__(self , bot):
         self.bot = bot
 
-    @commands.command(pass_context=True , help="/ Spawn random memes, this keeps the vibe going")
+    @commands.command(pass_context=True , help="/ Spawn random memes, this keeps the vibe going",aliases = ['mme' , 'memee','mem'])
     async def meme(self , ctx):
         embed = discord.Embed(title="", description="")
 
