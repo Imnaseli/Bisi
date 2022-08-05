@@ -39,7 +39,7 @@ async def unload(ctx , extension):
     bot.unload_extension(f'cogs.{extension}')
 
 @commands.has_permissions(administrator = True)    
-@bot.command(help = "/ For Administrators")
+@bot.command(help = "/ For Administrators" , aliases = ['rel' , 'relo' , 'rl' ,'r'])
 async def reload(ctx , extension):
     bot.unload_extension(f'cogs.{extension}')
     bot.load_extension(f'cogs.{extension}')
