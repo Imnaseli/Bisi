@@ -22,7 +22,6 @@ bot = commands.Bot(command_prefix='.')
 async def on_ready():
     change_status.start()
     await bot.change_presence(status=discord.Status.online) 
-    # await ctx.send("Bisi is now online niggers!")
     print("Bisi is ready!")
     
 @tasks.loop(minutes=2.5)

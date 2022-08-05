@@ -19,10 +19,6 @@ class Greeting(commands.Cog):
     @commands.command(help="/ Call Bisi up" , aliases = ['bis','BISI','BIS','BSI','Bis','Bisii'])
     async def bisi(self,ctx):
         await ctx.send(f"Hello {ctx.author.name} , i love my name too.")
-        # self.counter =+ 1
-        # if (self.counter % 2 == 0):
-        #     # await asyncio.sleep(1)
-        #     await ctx.send(random.choice(self.tips))
         
     @commands.command(help="/ Call Bisi up" , aliases = ['hey', 'hello' ,'hii','hiii' , 'hy','hyy','yoo','yo','heyy'])
     async def hi(self,ctx):
