@@ -1,1 +1,0 @@
-emotes - https://getemoji.com/

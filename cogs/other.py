@@ -22,7 +22,7 @@ class Other(commands.Cog):
                 embed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
                 await ctx.send(embed = embed)
     
-    @commands.command(help="/ Bisi deserves to be thanked sometimes.")
+    @commands.command(help="/ Bisi deserves to be thanked sometimes.", aliases = ['thank', 'thankyou'])
     async def thanks(self , ctx):
         await ctx.send(f"You are welcome, {ctx.author.name}")
 

@@ -19,7 +19,8 @@ class Welcome(commands.Cog):
         print(f"{member} has joined The Shifty Hell server.")
         
     @commands.Cog.listener()
-    async def on_member_remove(self , member):
+    async def on_member_remove(self , ctx,member):
+        await ctx.send(f"{member} has left The Shifty Hell.")
         print(f"{member} has left The Shifty Hell server.")
     
     

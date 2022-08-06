@@ -19,7 +19,7 @@ bot = commands.Bot(command_prefix='.')
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 @bot.event
-async def on_ready():
+async def on_ready( ):
     change_status.start()
     await bot.change_presence(status=discord.Status.online) 
     print("Bisi is ready!")
@@ -50,6 +50,7 @@ for filename in os.listdir('./cogs'):
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Errors - For now will create a cog for it soon.
+
 @bot.event
 async def on_command_error (ctx , error):
     if isinstance(error , commands.CommandNotFound):
@@ -60,6 +61,33 @@ async def on_command_error (ctx , error):
 
 
 
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ## Bisi has to be able to play some music
+# from youtube_dl import YoutubeDL
+
+# vc = {}
+# YTDL_OPTIONS = {'format' : 'bestaudio' }
+# YTDL = YoutubeDL(YTDL_OPTIONS) 
+# FFMPEG_OPTIONS = {'options':'-vn'} 
+        
+# @bot.event
+# async def on_message(msg):
+#     if msg.content.startswith('.play'):
+#         try:
+#             url = msg.content.split()[1]
+#             vc = await msg.author.voice.channel.connect()
+#             vc[vc.guild.id] = vc
+                    
+#             loop = asyncio.get_event_loop()
+#             data = await loop.run_in_executor(None, lambda: YTDL.extract_info(url , download=False) )
+                    
+#             song = data['url']
+#             player = discord.FFmpegAudio(song , **FFMPEG_OPTIONS )
+#             vc.play(player) 
+#         except Exception as e:
+#                 print(e)
+                    
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
