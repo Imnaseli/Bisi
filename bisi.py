@@ -14,7 +14,9 @@ Event decorator / simply saying " eyo! this is an Event "
 """""
 from config import *
 Discord_key = TOKEN_ 
-bot = commands.Bot(command_prefix='.')
+intents = discord.Intents.default()
+intents.members = True
+bot = commands.Bot(command_prefix='.' , intents = intents)
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -57,38 +59,18 @@ async def on_command_error (ctx , error):
         await ctx.send(f"Invalid command from {ctx.author.name}{os.linesep}(Please use .help to see a list of all commands)")
 
 
-
-
-
-
-
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# ## Bisi has to be able to play some music
-# from youtube_dl import YoutubeDL
-
-# vc = {}
-# YTDL_OPTIONS = {'format' : 'bestaudio' }
-# YTDL = YoutubeDL(YTDL_OPTIONS) 
-# FFMPEG_OPTIONS = {'options':'-vn'} 
-        
-# @bot.event
-# async def on_message(msg):
-#     if msg.content.startswith('.play'):
-#         try:
-#             url = msg.content.split()[1]
-#             vc = await msg.author.voice.channel.connect()
-#             vc[vc.guild.id] = vc
-                    
-#             loop = asyncio.get_event_loop()
-#             data = await loop.run_in_executor(None, lambda: YTDL.extract_info(url , download=False) )
-                    
-#             song = data['url']
-#             player = discord.FFmpegAudio(song , **FFMPEG_OPTIONS )
-#             vc.play(player) 
-#         except Exception as e:
-#                 print(e)
-                    
+#Welcoming New Members
+@bot.event
+async def on_member_join (member):
+    guild = bot.get_guild( 936775307929722890 )
+    channel = guild.get_channel(1009906321811853392)
+    await channel.send(f'Welcome to The Shifty Hell, {member.mention}!') #Welcome member on the server
+    await member.send(f'Thank you for joining the {guild.name}, {member.name}')# Welcome the member in their dms
+    
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 bot.run(Discord_key) #The bot instance has to run right?
+
+
