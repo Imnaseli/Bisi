@@ -23,6 +23,10 @@ class Greeting(commands.Cog):
     @commands.command(help="/ Call Bisi up" , aliases = ['hey', 'hello' ,'hii','hiii' , 'hy','hyy','yoo','yo','heyy'])
     async def hi(self,ctx):
         await ctx.send(f"Hey {ctx.author.name} , my name is Bisi.")
+
+    @commands.command(help="/ call Bisi up")
+    async def gg(self, ctx):
+        await ctx.send(f"Thank you for joining us today, {ctx.author.name}.")
         
 
 

@@ -24,7 +24,7 @@ bot = commands.Bot(command_prefix='.' , intents = intents)
 async def on_ready( ):
     change_status.start()
     await bot.change_presence(status=discord.Status.online) 
-    print("Bisi is ready!")
+    print("Bisi is now ready!")
     
 @tasks.loop(minutes=2.5)
 async def change_status():

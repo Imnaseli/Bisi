@@ -16,12 +16,12 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, ctx , member):
         await ctx.send(f"{member} has joined The Shifty Hell.")
-        print(f"{member} has joined The Shifty Hell server.")
+        print(f"{member} has just joined The Shifty Hell server.")
         
     @commands.Cog.listener()
     async def on_member_remove(self , ctx,member):
         await ctx.send(f"{member} has left The Shifty Hell.")
-        print(f"{member} has left The Shifty Hell server.")
+        print(f"{member} has just left The Shifty Hell server.")
     
     
         
